@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Reyla" Class="DCReyla" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.aspnet_Applications" Member="aspnet_Applications">
+    <Type Name="aspnet_Application">
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Application_aspnet_Membership" Member="aspnet_Memberships" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Membership" />
+      <Association Name="aspnet_Application_aspnet_Path" Member="aspnet_Paths" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Path" />
+      <Association Name="aspnet_Application_aspnet_Role" Member="aspnet_Roles" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Role" />
+      <Association Name="aspnet_Application_aspnet_User" Member="aspnet_Users" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Subscription" Member="Subscriptions">
+    <Type Name="Subscription">
+      <Column Name="SubscriptionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PlanName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaxUsers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxSnapshotsPerMonth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingCycleStartUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="BillingCycleEndUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="StripeCustomerId" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StripeSubscriptionId" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Organization_Subscription" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Membership" Member="aspnet_Memberships">
+    <Type Name="aspnet_Membership">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="aspnet_Application_aspnet_Membership" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Paths" Member="aspnet_Paths">
+    <Type Name="aspnet_Path">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredPath" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationAllUser" Member="aspnet_PersonalizationAllUser" ThisKey="PathId" OtherKey="PathId" Type="aspnet_PersonalizationAllUser" Cardinality="One" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers" ThisKey="PathId" OtherKey="PathId" Type="aspnet_PersonalizationPerUser" />
+      <Association Name="aspnet_Application_aspnet_Path" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationAllUsers" Member="aspnet_PersonalizationAllUsers">
+    <Type Name="aspnet_PersonalizationAllUser">
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationAllUser" Member="aspnet_Path" ThisKey="PathId" OtherKey="PathId" Type="aspnet_Path" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers">
+    <Type Name="aspnet_PersonalizationPerUser">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationPerUser" Member="aspnet_Path" ThisKey="PathId" OtherKey="PathId" Type="aspnet_Path" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_PersonalizationPerUser" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Profile" Member="aspnet_Profiles">
+    <Type Name="aspnet_Profile">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyNames" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesString" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesBinary" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_Profile" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Roles" Member="aspnet_Roles">
+    <Type Name="aspnet_Role">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_UsersInRole" />
+      <Association Name="aspnet_Application_aspnet_Role" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_SchemaVersions" Member="aspnet_SchemaVersions">
+    <Type Name="aspnet_SchemaVersion">
+      <Column Name="Feature" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompatibleSchemaVersion" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsCurrentVersion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_Membership" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Membership" Cardinality="One" />
+      <Association Name="aspnet_User_aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers" ThisKey="UserId" OtherKey="UserId" Type="aspnet_PersonalizationPerUser" />
+      <Association Name="aspnet_User_aspnet_Profile" Member="aspnet_Profile" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Profile" Cardinality="One" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="aspnet_UsersInRole" />
+      <Association Name="aspnet_User_Profile" Member="Profiles" ThisKey="UserId" OtherKey="UserId" Type="Profile" />
+      <Association Name="aspnet_Application_aspnet_User" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_UsersInRoles" Member="aspnet_UsersInRoles">
+    <Type Name="aspnet_UsersInRole">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_Role" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_Role" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_WebEvent_Events" Member="aspnet_WebEvent_Events">
+    <Type Name="aspnet_WebEvent_Event">
+      <Column Name="EventId" Type="System.String" DbType="Char(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EventTimeUtc" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="EventSequence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventOccurrence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventDetailCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ApplicationPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ApplicationVirtualPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MachineName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="RequestUrl" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ExceptionType" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="Cities">
+    <Type Name="City">
+      <Column Name="CityId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="City" Member="City1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City_Extended" Member="City_Extendeds">
+    <Type Name="City_Extended">
+      <Column Name="CityExtendedId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CountyId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="County" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="City_Extended_Property" Member="Properties" ThisKey="CityExtendedId" OtherKey="CityExtendedId" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="dbo.County" Member="Counties">
+    <Type Name="County">
+      <Column Name="CountyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="StateId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Organization" Member="Organizations">
+    <Type Name="Organization">
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Slug" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LogoUrl" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="WebsiteUrl" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BillingEmail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StreetAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StateCode" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Organization_Subscription" Member="Subscriptions" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Subscription" />
+      <Association Name="Organization_OrganizationUser" Member="OrganizationUsers" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="OrganizationUser" />
+      <Association Name="Organization_Profile" Member="Profiles" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Profile" />
+      <Association Name="Organization_PropertySearch" Member="PropertySearches" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="PropertySearch" />
+      <Association Name="Organization_PropertySnapshot" Member="PropertySnapshots" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="PropertySnapshot" />
+      <Association Name="Organization_ProspectSearch" Member="ProspectSearches" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="ProspectSearch" />
+      <Association Name="Organization_ProspectOwnerContact" Member="ProspectOwnerContacts" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="ProspectOwnerContact" />
+      <Association Name="Organization_Prospect" Member="Prospects" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Prospect" />
+      <Association Name="Organization_PropertyContact" Member="PropertyContacts" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="PropertyContact" />
+      <Association Name="Organization_Contact" Member="Contacts" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Contact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrganizationUser" Member="OrganizationUsers">
+    <Type Name="OrganizationUser">
+      <Column Name="OrganizationUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Organization_OrganizationUser" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Profile" Member="Profiles">
+    <Type Name="Profile">
+      <Column Name="ProfileId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RegistrationComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Timezone" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="aspnet_User_Profile" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+      <Association Name="Organization_Profile" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySearch" Member="PropertySearches">
+    <Type Name="PropertySearch">
+      <Column Name="PropertySearchId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RawSearchInput" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Organization_PropertySearch" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+      <Association Name="Property_PropertySearch" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshot" Member="PropertySnapshots">
+    <Type Name="PropertySnapshot">
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PulledAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiresAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastRefreshRequestedUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotAvm" Member="PropertySnapshotAvms" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotAvm" />
+      <Association Name="PropertySnapshot_PropertySnapshotBuilding" Member="PropertySnapshotBuildings" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotBuilding" />
+      <Association Name="PropertySnapshot_PropertySnapshotBuildingPermit" Member="PropertySnapshotBuildingPermits" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotBuildingPermit" />
+      <Association Name="PropertySnapshot_PropertySnapshotClimateRisk" Member="PropertySnapshotClimateRisks" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotClimateRisk" />
+      <Association Name="PropertySnapshot_PropertySnapshotHoa" Member="PropertySnapshotHoas" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotHoa" />
+      <Association Name="PropertySnapshot_PropertySnapshotInvoluntaryLien" Member="PropertySnapshotInvoluntaryLiens" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotInvoluntaryLien" />
+      <Association Name="PropertySnapshot_PropertySnapshotMortgage" Member="PropertySnapshotMortgages" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotMortgage" />
+      <Association Name="PropertySnapshot_PropertySnapshotOwnership" Member="PropertySnapshotOwnerships" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotOwnership" />
+      <Association Name="PropertySnapshot_PropertySnapshotOwnershipTransfer" Member="PropertySnapshotOwnershipTransfers" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotOwnershipTransfer" />
+      <Association Name="PropertySnapshot_PropertySnapshotPropensity" Member="PropertySnapshotPropensities" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotPropensity" />
+      <Association Name="PropertySnapshot_PropertySnapshotTaxAssessment" Member="PropertySnapshotTaxAssessments" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotTaxAssessment" />
+      <Association Name="PropertySnapshot_PropertySnapshotVoluntaryLien" Member="PropertySnapshotVoluntaryLiens" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshotVoluntaryLien" />
+      <Association Name="Organization_PropertySnapshot" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+      <Association Name="Property_PropertySnapshot" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotAvm" Member="PropertySnapshotAvms">
+    <Type Name="PropertySnapshotAvm">
+      <Column Name="PropertySnapshotAvmId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="EstimatedValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="EstimatedValueHigh" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="EstimatedValueLow" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ForecastStandardDeviation" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="ConfidenceScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="ValuationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="RentEstimatedValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RentEstimatedValueHigh" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RentEstimatedValueLow" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CapRate" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotAvm" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotBuilding" Member="PropertySnapshotBuildings">
+    <Type Name="PropertySnapshotBuilding">
+      <Column Name="PropertySnapshotBuildingId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="YearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EffectiveYearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GrossLivingArea" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalRooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bedrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.Decimal" DbType="Decimal(4,1)" CanBeNull="true" />
+      <Column Name="Stories" Type="System.Decimal" DbType="Decimal(4,1)" CanBeNull="true" />
+      <Column Name="ConstructionType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RoofType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BuildingCondition" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotBuilding" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotBuildingPermit" Member="PropertySnapshotBuildingPermits">
+    <Type Name="PropertySnapshotBuildingPermit">
+      <Column Name="PropertySnapshotBuildingPermitId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PermitNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PermitType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IssueDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JobValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotBuildingPermit" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotClimateRisk" Member="PropertySnapshotClimateRisks">
+    <Type Name="PropertySnapshotClimateRisk">
+      <Column Name="PropertySnapshotClimateRiskId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FloodRiskScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="FloodRiskLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FireRiskScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="FireRiskLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WindRiskScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="WindRiskLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HeatRiskScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="HeatRiskLabel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotClimateRisk" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotHoa" Member="PropertySnapshotHoas">
+    <Type Name="PropertySnapshotHoa">
+      <Column Name="PropertySnapshotHoaId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="HoaName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HoaFeeAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="HoaFeeFrequency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HoaPhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotHoa" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotInvoluntaryLien" Member="PropertySnapshotInvoluntaryLiens">
+    <Type Name="PropertySnapshotInvoluntaryLien">
+      <Column Name="PropertySnapshotInvoluntaryLienId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LienAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LienType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreditorName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RecordingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotInvoluntaryLien" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotMortgage" Member="PropertySnapshotMortgages">
+    <Type Name="PropertySnapshotMortgage">
+      <Column Name="PropertySnapshotMortgageId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LenderName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LoanAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="OriginationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LoanType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="InterestRate" Type="System.Decimal" DbType="Decimal(6,4)" CanBeNull="true" />
+      <Column Name="LoanPosition" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaturityDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotMortgage" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotOwnership" Member="PropertySnapshotOwnerships">
+    <Type Name="PropertySnapshotOwnership">
+      <Column Name="PropertySnapshotOwnershipId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Owner1FirstName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Owner1LastName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Owner2FirstName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Owner2LastName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="AbsenteeOwnerStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnershipType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MailingAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MailingCity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MailingState" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="MailingZipCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotOwnership" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotOwnershipTransfer" Member="PropertySnapshotOwnershipTransfers">
+    <Type Name="PropertySnapshotOwnershipTransfer">
+      <Column Name="PropertySnapshotOwnershipTransferId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SaleDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SaleAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DeedType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotOwnershipTransfer" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotPropensity" Member="PropertySnapshotPropensities">
+    <Type Name="PropertySnapshotPropensity">
+      <Column Name="PropertySnapshotPropensityId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropensityScore" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="PropensityTier" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PropensityScoreDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotPropensity" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotTaxAssessment" Member="PropertySnapshotTaxAssessments">
+    <Type Name="PropertySnapshotTaxAssessment">
+      <Column Name="PropertySnapshotTaxAssessmentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AssessedValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AssessedLandValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AssessedImprovementValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MarketValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxYear" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="TaxDelinquentYear" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotTaxAssessment" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertySnapshotVoluntaryLien" Member="PropertySnapshotVoluntaryLiens">
+    <Type Name="PropertySnapshotVoluntaryLien">
+      <Column Name="PropertySnapshotVoluntaryLienId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertySnapshotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LienAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LienType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LenderName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RecordingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="PropertySnapshot_PropertySnapshotVoluntaryLien" Member="PropertySnapshot" ThisKey="PropertySnapshotId" OtherKey="PropertySnapshotId" Type="PropertySnapshot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProspectSearch" Member="ProspectSearches">
+    <Type Name="ProspectSearch">
+      <Column Name="ProspectSearchId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OriginAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OriginLat" Type="System.Decimal" DbType="Decimal(9,6) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginLng" Type="System.Decimal" DbType="Decimal(9,6) NOT NULL" CanBeNull="false" />
+      <Column Name="RadiusMiles" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalResults" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="ProspectSearch_ProspectSearchProperty" Member="ProspectSearchProperties" ThisKey="ProspectSearchId" OtherKey="ProspectSearchId" Type="ProspectSearchProperty" />
+      <Association Name="Organization_ProspectSearch" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProspectSearchProperty" Member="ProspectSearchProperties">
+    <Type Name="ProspectSearchProperty">
+      <Column Name="ProspectSearchPropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProspectSearchId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="ProspectSearch_ProspectSearchProperty" Member="ProspectSearch" ThisKey="ProspectSearchId" OtherKey="ProspectSearchId" Type="ProspectSearch" IsForeignKey="true" />
+      <Association Name="Property_ProspectSearchProperty" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.States" Member="States">
+    <Type Name="State">
+      <Column Name="StatesId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProspectCompsCache" Member="ProspectCompsCaches">
+    <Type Name="ProspectCompsCache">
+      <Column Name="ProspectCompsCacheId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProspectId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CompsJson" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiresAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="Prospect_ProspectCompsCache" Member="Prospect" ThisKey="ProspectId" OtherKey="ProspectId" Type="Prospect" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Property" Member="Properties">
+    <Type Name="Property">
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Clip" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FipsCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="StreetAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CityExtendedId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CityNameRaw" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZipCodeRaw" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Decimal" DbType="Decimal(9,6) NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.Decimal" DbType="Decimal(9,6) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ZoningCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PropertyUseCode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LotSquareFeet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Property_PropertySearch" Member="PropertySearches" ThisKey="PropertyId" OtherKey="PropertyId" Type="PropertySearch" />
+      <Association Name="Property_PropertySnapshot" Member="PropertySnapshots" ThisKey="PropertyId" OtherKey="PropertyId" Type="PropertySnapshot" />
+      <Association Name="Property_ProspectSearchProperty" Member="ProspectSearchProperties" ThisKey="PropertyId" OtherKey="PropertyId" Type="ProspectSearchProperty" />
+      <Association Name="Property_ProspectOwnerContact" Member="ProspectOwnerContacts" ThisKey="PropertyId" OtherKey="PropertyId" Type="ProspectOwnerContact" />
+      <Association Name="Property_Prospect" Member="Prospects" ThisKey="PropertyId" OtherKey="PropertyId" Type="Prospect" />
+      <Association Name="Property_PropertyContact" Member="PropertyContacts" ThisKey="PropertyId" OtherKey="PropertyId" Type="PropertyContact" />
+      <Association Name="City_Extended_Property" Member="City_Extended" ThisKey="CityExtendedId" OtherKey="CityExtendedId" Type="City_Extended" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivityLog" Member="ActivityLogs">
+    <Type Name="ActivityLog">
+      <Column Name="ActivityLogId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="EntityType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EntityId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityType" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Metadata" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProspectOwnerContact" Member="ProspectOwnerContacts">
+    <Type Name="ProspectOwnerContact">
+      <Column Name="ProspectOwnerContactId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PreferredContact" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MailingAddress" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Organization_ProspectOwnerContact" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+      <Association Name="Property_ProspectOwnerContact" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProspectNote" Member="ProspectNotes">
+    <Type Name="ProspectNote">
+      <Column Name="ProspectNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProspectId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NoteText" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Prospect_ProspectNote" Member="Prospect" ThisKey="ProspectId" OtherKey="ProspectId" Type="Prospect" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prospect" Member="Prospects">
+    <Type Name="Prospect">
+      <Column Name="ProspectId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="SelectedCompsJson" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ContactedNotes" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Prospect_ProspectCompsCache" Member="ProspectCompsCaches" ThisKey="ProspectId" OtherKey="ProspectId" Type="ProspectCompsCache" />
+      <Association Name="Prospect_ProspectNote" Member="ProspectNotes" ThisKey="ProspectId" OtherKey="ProspectId" Type="ProspectNote" />
+      <Association Name="Prospect_Deal" Member="Deals" ThisKey="ProspectId" OtherKey="ProspectId" Type="Deal" />
+      <Association Name="Organization_Prospect" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+      <Association Name="Property_Prospect" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Deal" Member="Deals">
+    <Type Name="Deal">
+      <Column Name="DealId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProspectId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Stage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StageOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyAddress" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="AskingPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="OfferPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CloseDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Deal_DealNote" Member="DealNotes" ThisKey="DealId" OtherKey="DealId" Type="DealNote" />
+      <Association Name="Prospect_Deal" Member="Prospect" ThisKey="ProspectId" OtherKey="ProspectId" Type="Prospect" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DealNote" Member="DealNotes">
+    <Type Name="DealNote">
+      <Column Name="DealNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DealId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NoteText" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Deal_DealNote" Member="Deal" ThisKey="DealId" OtherKey="DealId" Type="Deal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContactContactType" Member="ContactContactTypes">
+    <Type Name="ContactContactType">
+      <Column Name="ContactContactTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ContactId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ContactTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="ContactType_ContactContactType" Member="ContactType" ThisKey="ContactTypeId" OtherKey="ContactTypeId" Type="ContactType" IsForeignKey="true" />
+      <Association Name="Contact_ContactContactType" Member="Contact" ThisKey="ContactId" OtherKey="ContactId" Type="Contact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContactType" Member="ContactTypes">
+    <Type Name="ContactType">
+      <Column Name="ContactTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="ContactType_ContactContactType" Member="ContactContactTypes" ThisKey="ContactTypeId" OtherKey="ContactTypeId" Type="ContactContactType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropertyContact" Member="PropertyContacts">
+    <Type Name="PropertyContact">
+      <Column Name="PropertyContactId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ContactId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="PreferredContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Organization_PropertyContact" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+      <Association Name="Property_PropertyContact" Member="Property" ThisKey="PropertyId" OtherKey="PropertyId" Type="Property" IsForeignKey="true" />
+      <Association Name="Contact_PropertyContact" Member="Contact" ThisKey="ContactId" OtherKey="ContactId" Type="Contact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contact" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="ContactId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LinkedInUrl" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="GoogleContactId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OutlookContactId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OrganizationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAtUtc" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedAtUtc" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="PreferredContact" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Contact_ContactContactType" Member="ContactContactTypes" ThisKey="ContactId" OtherKey="ContactId" Type="ContactContactType" />
+      <Association Name="Contact_PropertyContact" Member="PropertyContacts" ThisKey="ContactId" OtherKey="ContactId" Type="PropertyContact" />
+      <Association Name="Organization_Contact" Member="Organization" ThisKey="OrganizationId" OtherKey="OrganizationId" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

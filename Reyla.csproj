@@ -1,0 +1,1145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{56B3AFAB-B5D3-41A5-90AD-CB6A8FAAABC2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Reyla</RootNamespace>
+    <AssemblyName>Reyla</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44323</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AccessDenied.aspx" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon-96x96.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="favicon.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Index.html" />
+    <Content Include="Privacy.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="ReylaDataContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ReylaDataContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Secure\Activity.aspx" />
+    <Content Include="Secure\Contacts\Contact.aspx" />
+    <Content Include="Secure\Contacts\Index.aspx" />
+    <Content Include="Secure\Prospects\CompToggle.ashx" />
+    <None Include="ReylaDataContext.dbml.layout">
+      <DependentUpon>ReylaDataContext.dbml</DependentUpon>
+    </None>
+    <Content Include="ReylaBasic.Master" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Secure\Income.aspx" />
+    <Content Include="Secure\Notifications.aspx" />
+    <Content Include="Secure\Map.aspx" />
+    <Content Include="Secure\Prospects\Comps.aspx" />
+    <Content Include="Secure\Prospects\Digest.aspx" />
+    <Content Include="Secure\Prospects\Pipeline.aspx" />
+    <Content Include="Secure\Prospects\PropertyDetail.aspx" />
+    <Content Include="Secure\Prospects\ProspectMap.aspx" />
+    <Content Include="Secure\Prospects\Prospects.aspx" />
+    <Content Include="Secure\Prospects\Search.aspx" />
+    <Content Include="Secure\Support.aspx" />
+    <Content Include="Secure\Settings.aspx" />
+    <Content Include="Secure\Profile.aspx" />
+    <Content Include="Secure\Index.aspx" />
+    <Content Include="Signin.aspx" />
+    <Content Include="Terms.aspx" />
+    <Content Include="Theme\analytics.html" />
+    <Content Include="Theme\api-keys.html" />
+    <Content Include="Theme\assets\css\app.css" />
+    <Content Include="Theme\assets\css\app.min.css" />
+    <Content Include="Theme\assets\css\vendors.min.css" />
+    <Content Include="Theme\assets\images\bg-pattern.png" />
+    <Content Include="Theme\assets\images\cards\american-express.svg" />
+    <Content Include="Theme\assets\images\cards\bhim.svg" />
+    <Content Include="Theme\assets\images\cards\discover-card.svg" />
+    <Content Include="Theme\assets\images\cards\google-wallet.svg" />
+    <Content Include="Theme\assets\images\cards\mastercard.svg" />
+    <Content Include="Theme\assets\images\cards\payoneer.svg" />
+    <Content Include="Theme\assets\images\cards\paypal.svg" />
+    <Content Include="Theme\assets\images\cards\stripe.svg" />
+    <Content Include="Theme\assets\images\cards\unionpay.svg" />
+    <Content Include="Theme\assets\images\cards\visa.svg" />
+    <Content Include="Theme\assets\images\checkmark.png" />
+    <Content Include="Theme\assets\images\clients\01.svg" />
+    <Content Include="Theme\assets\images\clients\02.svg" />
+    <Content Include="Theme\assets\images\clients\03.svg" />
+    <Content Include="Theme\assets\images\clients\04.svg" />
+    <Content Include="Theme\assets\images\clients\05.svg" />
+    <Content Include="Theme\assets\images\clients\06.svg" />
+    <Content Include="Theme\assets\images\clients\07.svg" />
+    <Content Include="Theme\assets\images\delete.png" />
+    <Content Include="Theme\assets\images\favicon.ico" />
+    <Content Include="Theme\assets\images\flags\ac.svg" />
+    <Content Include="Theme\assets\images\flags\ad.svg" />
+    <Content Include="Theme\assets\images\flags\ae.svg" />
+    <Content Include="Theme\assets\images\flags\af.svg" />
+    <Content Include="Theme\assets\images\flags\ag.svg" />
+    <Content Include="Theme\assets\images\flags\ai.svg" />
+    <Content Include="Theme\assets\images\flags\al.svg" />
+    <Content Include="Theme\assets\images\flags\am.svg" />
+    <Content Include="Theme\assets\images\flags\ao.svg" />
+    <Content Include="Theme\assets\images\flags\aq.svg" />
+    <Content Include="Theme\assets\images\flags\ar.svg" />
+    <Content Include="Theme\assets\images\flags\as.svg" />
+    <Content Include="Theme\assets\images\flags\at.svg" />
+    <Content Include="Theme\assets\images\flags\au.svg" />
+    <Content Include="Theme\assets\images\flags\aw.svg" />
+    <Content Include="Theme\assets\images\flags\ax.svg" />
+    <Content Include="Theme\assets\images\flags\az.svg" />
+    <Content Include="Theme\assets\images\flags\ba.svg" />
+    <Content Include="Theme\assets\images\flags\bb.svg" />
+    <Content Include="Theme\assets\images\flags\bd.svg" />
+    <Content Include="Theme\assets\images\flags\be.svg" />
+    <Content Include="Theme\assets\images\flags\bf.svg" />
+    <Content Include="Theme\assets\images\flags\bg.svg" />
+    <Content Include="Theme\assets\images\flags\bh.svg" />
+    <Content Include="Theme\assets\images\flags\bi.svg" />
+    <Content Include="Theme\assets\images\flags\bj.svg" />
+    <Content Include="Theme\assets\images\flags\bl.svg" />
+    <Content Include="Theme\assets\images\flags\bm.svg" />
+    <Content Include="Theme\assets\images\flags\bn.svg" />
+    <Content Include="Theme\assets\images\flags\bo.svg" />
+    <Content Include="Theme\assets\images\flags\bq.svg" />
+    <Content Include="Theme\assets\images\flags\br.svg" />
+    <Content Include="Theme\assets\images\flags\bs.svg" />
+    <Content Include="Theme\assets\images\flags\bt.svg" />
+    <Content Include="Theme\assets\images\flags\bv.svg" />
+    <Content Include="Theme\assets\images\flags\bw.svg" />
+    <Content Include="Theme\assets\images\flags\by.svg" />
+    <Content Include="Theme\assets\images\flags\bz.svg" />
+    <Content Include="Theme\assets\images\flags\ca.svg" />
+    <Content Include="Theme\assets\images\flags\cc.svg" />
+    <Content Include="Theme\assets\images\flags\cd.svg" />
+    <Content Include="Theme\assets\images\flags\cefta.svg" />
+    <Content Include="Theme\assets\images\flags\cf.svg" />
+    <Content Include="Theme\assets\images\flags\cg.svg" />
+    <Content Include="Theme\assets\images\flags\ch.svg" />
+    <Content Include="Theme\assets\images\flags\ci.svg" />
+    <Content Include="Theme\assets\images\flags\ck.svg" />
+    <Content Include="Theme\assets\images\flags\cl.svg" />
+    <Content Include="Theme\assets\images\flags\cm.svg" />
+    <Content Include="Theme\assets\images\flags\cn.svg" />
+    <Content Include="Theme\assets\images\flags\co.svg" />
+    <Content Include="Theme\assets\images\flags\cp.svg" />
+    <Content Include="Theme\assets\images\flags\cr.svg" />
+    <Content Include="Theme\assets\images\flags\cu.svg" />
+    <Content Include="Theme\assets\images\flags\cv.svg" />
+    <Content Include="Theme\assets\images\flags\cw.svg" />
+    <Content Include="Theme\assets\images\flags\cx.svg" />
+    <Content Include="Theme\assets\images\flags\cy.svg" />
+    <Content Include="Theme\assets\images\flags\cz.svg" />
+    <Content Include="Theme\assets\images\flags\de.svg" />
+    <Content Include="Theme\assets\images\flags\dg.svg" />
+    <Content Include="Theme\assets\images\flags\dj.svg" />
+    <Content Include="Theme\assets\images\flags\dk.svg" />
+    <Content Include="Theme\assets\images\flags\dm.svg" />
+    <Content Include="Theme\assets\images\flags\do.svg" />
+    <Content Include="Theme\assets\images\flags\dz.svg" />
+    <Content Include="Theme\assets\images\flags\ea.svg" />
+    <Content Include="Theme\assets\images\flags\ec.svg" />
+    <Content Include="Theme\assets\images\flags\ee.svg" />
+    <Content Include="Theme\assets\images\flags\eg.svg" />
+    <Content Include="Theme\assets\images\flags\eh.svg" />
+    <Content Include="Theme\assets\images\flags\er.svg" />
+    <Content Include="Theme\assets\images\flags\es-ct.svg" />
+    <Content Include="Theme\assets\images\flags\es-ga.svg" />
+    <Content Include="Theme\assets\images\flags\es.svg" />
+    <Content Include="Theme\assets\images\flags\et.svg" />
+    <Content Include="Theme\assets\images\flags\eu.svg" />
+    <Content Include="Theme\assets\images\flags\fi.svg" />
+    <Content Include="Theme\assets\images\flags\fj.svg" />
+    <Content Include="Theme\assets\images\flags\fk.svg" />
+    <Content Include="Theme\assets\images\flags\fm.svg" />
+    <Content Include="Theme\assets\images\flags\fo.svg" />
+    <Content Include="Theme\assets\images\flags\fr.svg" />
+    <Content Include="Theme\assets\images\flags\ga.svg" />
+    <Content Include="Theme\assets\images\flags\gb-eng.svg" />
+    <Content Include="Theme\assets\images\flags\gb-nir.svg" />
+    <Content Include="Theme\assets\images\flags\gb-sct.svg" />
+    <Content Include="Theme\assets\images\flags\gb-wls.svg" />
+    <Content Include="Theme\assets\images\flags\gb.svg" />
+    <Content Include="Theme\assets\images\flags\gd.svg" />
+    <Content Include="Theme\assets\images\flags\ge.svg" />
+    <Content Include="Theme\assets\images\flags\gf.svg" />
+    <Content Include="Theme\assets\images\flags\gg.svg" />
+    <Content Include="Theme\assets\images\flags\gh.svg" />
+    <Content Include="Theme\assets\images\flags\gi.svg" />
+    <Content Include="Theme\assets\images\flags\gl.svg" />
+    <Content Include="Theme\assets\images\flags\gm.svg" />
+    <Content Include="Theme\assets\images\flags\gn.svg" />
+    <Content Include="Theme\assets\images\flags\gp.svg" />
+    <Content Include="Theme\assets\images\flags\gq.svg" />
+    <Content Include="Theme\assets\images\flags\gr.svg" />
+    <Content Include="Theme\assets\images\flags\gs.svg" />
+    <Content Include="Theme\assets\images\flags\gt.svg" />
+    <Content Include="Theme\assets\images\flags\gu.svg" />
+    <Content Include="Theme\assets\images\flags\gw.svg" />
+    <Content Include="Theme\assets\images\flags\gy.svg" />
+    <Content Include="Theme\assets\images\flags\hk.svg" />
+    <Content Include="Theme\assets\images\flags\hm.svg" />
+    <Content Include="Theme\assets\images\flags\hn.svg" />
+    <Content Include="Theme\assets\images\flags\hr.svg" />
+    <Content Include="Theme\assets\images\flags\ht.svg" />
+    <Content Include="Theme\assets\images\flags\hu.svg" />
+    <Content Include="Theme\assets\images\flags\ic.svg" />
+    <Content Include="Theme\assets\images\flags\id.svg" />
+    <Content Include="Theme\assets\images\flags\ie.svg" />
+    <Content Include="Theme\assets\images\flags\il.svg" />
+    <Content Include="Theme\assets\images\flags\im.svg" />
+    <Content Include="Theme\assets\images\flags\in.svg" />
+    <Content Include="Theme\assets\images\flags\io.svg" />
+    <Content Include="Theme\assets\images\flags\iq.svg" />
+    <Content Include="Theme\assets\images\flags\ir.svg" />
+    <Content Include="Theme\assets\images\flags\is.svg" />
+    <Content Include="Theme\assets\images\flags\it.svg" />
+    <Content Include="Theme\assets\images\flags\italy.svg" />
+    <Content Include="Theme\assets\images\flags\je.svg" />
+    <Content Include="Theme\assets\images\flags\jm.svg" />
+    <Content Include="Theme\assets\images\flags\jo.svg" />
+    <Content Include="Theme\assets\images\flags\jp.svg" />
+    <Content Include="Theme\assets\images\flags\ke.svg" />
+    <Content Include="Theme\assets\images\flags\kg.svg" />
+    <Content Include="Theme\assets\images\flags\kh.svg" />
+    <Content Include="Theme\assets\images\flags\ki.svg" />
+    <Content Include="Theme\assets\images\flags\km.svg" />
+    <Content Include="Theme\assets\images\flags\kn.svg" />
+    <Content Include="Theme\assets\images\flags\kp.svg" />
+    <Content Include="Theme\assets\images\flags\kr.svg" />
+    <Content Include="Theme\assets\images\flags\kw.svg" />
+    <Content Include="Theme\assets\images\flags\ky.svg" />
+    <Content Include="Theme\assets\images\flags\kz.svg" />
+    <Content Include="Theme\assets\images\flags\la.svg" />
+    <Content Include="Theme\assets\images\flags\lb.svg" />
+    <Content Include="Theme\assets\images\flags\lc.svg" />
+    <Content Include="Theme\assets\images\flags\li.svg" />
+    <Content Include="Theme\assets\images\flags\lk.svg" />
+    <Content Include="Theme\assets\images\flags\lr.svg" />
+    <Content Include="Theme\assets\images\flags\ls.svg" />
+    <Content Include="Theme\assets\images\flags\lt.svg" />
+    <Content Include="Theme\assets\images\flags\lu.svg" />
+    <Content Include="Theme\assets\images\flags\lv.svg" />
+    <Content Include="Theme\assets\images\flags\ly.svg" />
+    <Content Include="Theme\assets\images\flags\ma.svg" />
+    <Content Include="Theme\assets\images\flags\mc.svg" />
+    <Content Include="Theme\assets\images\flags\md.svg" />
+    <Content Include="Theme\assets\images\flags\me.svg" />
+    <Content Include="Theme\assets\images\flags\mf.svg" />
+    <Content Include="Theme\assets\images\flags\mg.svg" />
+    <Content Include="Theme\assets\images\flags\mh.svg" />
+    <Content Include="Theme\assets\images\flags\mk.svg" />
+    <Content Include="Theme\assets\images\flags\ml.svg" />
+    <Content Include="Theme\assets\images\flags\mm.svg" />
+    <Content Include="Theme\assets\images\flags\mn.svg" />
+    <Content Include="Theme\assets\images\flags\mo.svg" />
+    <Content Include="Theme\assets\images\flags\mp.svg" />
+    <Content Include="Theme\assets\images\flags\mq.svg" />
+    <Content Include="Theme\assets\images\flags\mr.svg" />
+    <Content Include="Theme\assets\images\flags\ms.svg" />
+    <Content Include="Theme\assets\images\flags\mt.svg" />
+    <Content Include="Theme\assets\images\flags\mu.svg" />
+    <Content Include="Theme\assets\images\flags\mv.svg" />
+    <Content Include="Theme\assets\images\flags\mw.svg" />
+    <Content Include="Theme\assets\images\flags\mx.svg" />
+    <Content Include="Theme\assets\images\flags\my.svg" />
+    <Content Include="Theme\assets\images\flags\mz.svg" />
+    <Content Include="Theme\assets\images\flags\na.svg" />
+    <Content Include="Theme\assets\images\flags\nc.svg" />
+    <Content Include="Theme\assets\images\flags\ne.svg" />
+    <Content Include="Theme\assets\images\flags\nf.svg" />
+    <Content Include="Theme\assets\images\flags\ng.svg" />
+    <Content Include="Theme\assets\images\flags\ni.svg" />
+    <Content Include="Theme\assets\images\flags\nl.svg" />
+    <Content Include="Theme\assets\images\flags\no.svg" />
+    <Content Include="Theme\assets\images\flags\np.svg" />
+    <Content Include="Theme\assets\images\flags\nr.svg" />
+    <Content Include="Theme\assets\images\flags\nu.svg" />
+    <Content Include="Theme\assets\images\flags\nz.svg" />
+    <Content Include="Theme\assets\images\flags\om.svg" />
+    <Content Include="Theme\assets\images\flags\pa.svg" />
+    <Content Include="Theme\assets\images\flags\pe.svg" />
+    <Content Include="Theme\assets\images\flags\pf.svg" />
+    <Content Include="Theme\assets\images\flags\pg.svg" />
+    <Content Include="Theme\assets\images\flags\ph.svg" />
+    <Content Include="Theme\assets\images\flags\pk.svg" />
+    <Content Include="Theme\assets\images\flags\pl.svg" />
+    <Content Include="Theme\assets\images\flags\pm.svg" />
+    <Content Include="Theme\assets\images\flags\pn.svg" />
+    <Content Include="Theme\assets\images\flags\pr.svg" />
+    <Content Include="Theme\assets\images\flags\ps.svg" />
+    <Content Include="Theme\assets\images\flags\pt.svg" />
+    <Content Include="Theme\assets\images\flags\pw.svg" />
+    <Content Include="Theme\assets\images\flags\py.svg" />
+    <Content Include="Theme\assets\images\flags\qa.svg" />
+    <Content Include="Theme\assets\images\flags\re.svg" />
+    <Content Include="Theme\assets\images\flags\ro.svg" />
+    <Content Include="Theme\assets\images\flags\rs.svg" />
+    <Content Include="Theme\assets\images\flags\ru.svg" />
+    <Content Include="Theme\assets\images\flags\rw.svg" />
+    <Content Include="Theme\assets\images\flags\sa.svg" />
+    <Content Include="Theme\assets\images\flags\sb.svg" />
+    <Content Include="Theme\assets\images\flags\sc.svg" />
+    <Content Include="Theme\assets\images\flags\sd.svg" />
+    <Content Include="Theme\assets\images\flags\se.svg" />
+    <Content Include="Theme\assets\images\flags\sg.svg" />
+    <Content Include="Theme\assets\images\flags\sh.svg" />
+    <Content Include="Theme\assets\images\flags\si.svg" />
+    <Content Include="Theme\assets\images\flags\sj.svg" />
+    <Content Include="Theme\assets\images\flags\sk.svg" />
+    <Content Include="Theme\assets\images\flags\sl.svg" />
+    <Content Include="Theme\assets\images\flags\sm.svg" />
+    <Content Include="Theme\assets\images\flags\sn.svg" />
+    <Content Include="Theme\assets\images\flags\so.svg" />
+    <Content Include="Theme\assets\images\flags\sr.svg" />
+    <Content Include="Theme\assets\images\flags\ss.svg" />
+    <Content Include="Theme\assets\images\flags\st.svg" />
+    <Content Include="Theme\assets\images\flags\sv.svg" />
+    <Content Include="Theme\assets\images\flags\sx.svg" />
+    <Content Include="Theme\assets\images\flags\sy.svg" />
+    <Content Include="Theme\assets\images\flags\sz.svg" />
+    <Content Include="Theme\assets\images\flags\ta.svg" />
+    <Content Include="Theme\assets\images\flags\tc.svg" />
+    <Content Include="Theme\assets\images\flags\td.svg" />
+    <Content Include="Theme\assets\images\flags\tf.svg" />
+    <Content Include="Theme\assets\images\flags\tg.svg" />
+    <Content Include="Theme\assets\images\flags\th.svg" />
+    <Content Include="Theme\assets\images\flags\tj.svg" />
+    <Content Include="Theme\assets\images\flags\tk.svg" />
+    <Content Include="Theme\assets\images\flags\tl.svg" />
+    <Content Include="Theme\assets\images\flags\tm.svg" />
+    <Content Include="Theme\assets\images\flags\tn.svg" />
+    <Content Include="Theme\assets\images\flags\to.svg" />
+    <Content Include="Theme\assets\images\flags\tr.svg" />
+    <Content Include="Theme\assets\images\flags\tt.svg" />
+    <Content Include="Theme\assets\images\flags\tv.svg" />
+    <Content Include="Theme\assets\images\flags\tw.svg" />
+    <Content Include="Theme\assets\images\flags\tz.svg" />
+    <Content Include="Theme\assets\images\flags\ua.svg" />
+    <Content Include="Theme\assets\images\flags\ug.svg" />
+    <Content Include="Theme\assets\images\flags\um.svg" />
+    <Content Include="Theme\assets\images\flags\un.svg" />
+    <Content Include="Theme\assets\images\flags\us.svg" />
+    <Content Include="Theme\assets\images\flags\uy.svg" />
+    <Content Include="Theme\assets\images\flags\uz.svg" />
+    <Content Include="Theme\assets\images\flags\va.svg" />
+    <Content Include="Theme\assets\images\flags\vc.svg" />
+    <Content Include="Theme\assets\images\flags\ve.svg" />
+    <Content Include="Theme\assets\images\flags\vg.svg" />
+    <Content Include="Theme\assets\images\flags\vi.svg" />
+    <Content Include="Theme\assets\images\flags\vn.svg" />
+    <Content Include="Theme\assets\images\flags\vu.svg" />
+    <Content Include="Theme\assets\images\flags\wf.svg" />
+    <Content Include="Theme\assets\images\flags\ws.svg" />
+    <Content Include="Theme\assets\images\flags\xk.svg" />
+    <Content Include="Theme\assets\images\flags\xx.svg" />
+    <Content Include="Theme\assets\images\flags\ye.svg" />
+    <Content Include="Theme\assets\images\flags\yt.svg" />
+    <Content Include="Theme\assets\images\flags\za.svg" />
+    <Content Include="Theme\assets\images\flags\zm.svg" />
+    <Content Include="Theme\assets\images\flags\zw.svg" />
+    <Content Include="Theme\assets\images\gallery\1.jpg" />
+    <Content Include="Theme\assets\images\gallery\10.jpg" />
+    <Content Include="Theme\assets\images\gallery\11.jpg" />
+    <Content Include="Theme\assets\images\gallery\12.jpg" />
+    <Content Include="Theme\assets\images\gallery\13.jpg" />
+    <Content Include="Theme\assets\images\gallery\14.jpg" />
+    <Content Include="Theme\assets\images\gallery\15.jpg" />
+    <Content Include="Theme\assets\images\gallery\16.jpg" />
+    <Content Include="Theme\assets\images\gallery\17.jpg" />
+    <Content Include="Theme\assets\images\gallery\18.jpg" />
+    <Content Include="Theme\assets\images\gallery\19.jpg" />
+    <Content Include="Theme\assets\images\gallery\2.jpg" />
+    <Content Include="Theme\assets\images\gallery\20.jpg" />
+    <Content Include="Theme\assets\images\gallery\21.jpg" />
+    <Content Include="Theme\assets\images\gallery\22.jpg" />
+    <Content Include="Theme\assets\images\gallery\23.jpg" />
+    <Content Include="Theme\assets\images\gallery\3.jpg" />
+    <Content Include="Theme\assets\images\gallery\4.jpg" />
+    <Content Include="Theme\assets\images\gallery\5.jpg" />
+    <Content Include="Theme\assets\images\gallery\6.jpg" />
+    <Content Include="Theme\assets\images\gallery\7.jpg" />
+    <Content Include="Theme\assets\images\gallery\8.jpg" />
+    <Content Include="Theme\assets\images\gallery\9.jpg" />
+    <Content Include="Theme\assets\images\landing-cta.jpg" />
+    <Content Include="Theme\assets\images\layouts\dark.svg" />
+    <Content Include="Theme\assets\images\layouts\light.svg" />
+    <Content Include="Theme\assets\images\layouts\sidebar-condensed.svg" />
+    <Content Include="Theme\assets\images\layouts\sidebar-offcanvas.svg" />
+    <Content Include="Theme\assets\images\layouts\sidenav-dark.svg" />
+    <Content Include="Theme\assets\images\layouts\sidenav-gray.svg" />
+    <Content Include="Theme\assets\images\layouts\topbar-dark.svg" />
+    <Content Include="Theme\assets\images\layouts\topbar-gray.svg" />
+    <Content Include="Theme\assets\images\layouts\topbar-light.svg" />
+    <Content Include="Theme\assets\images\leaflet\layers.png" />
+    <Content Include="Theme\assets\images\leaflet\leaf-green.png" />
+    <Content Include="Theme\assets\images\leaflet\leaf-orange.png" />
+    <Content Include="Theme\assets\images\leaflet\leaf-red.png" />
+    <Content Include="Theme\assets\images\leaflet\leaf-shadow.png" />
+    <Content Include="Theme\assets\images\leaflet\marker-icon.png" />
+    <Content Include="Theme\assets\images\leaflet\marker-shadow.png" />
+    <Content Include="Theme\assets\images\location-pin.png" />
+    <Content Include="Theme\assets\images\logo-black.png" />
+    <Content Include="Theme\assets\images\logo-favicon.png" />
+    <Content Include="Theme\assets\images\logo-sm.png" />
+    <Content Include="Theme\assets\images\logo-transparent.png" />
+    <Content Include="Theme\assets\images\logo.png" />
+    <Content Include="Theme\assets\images\profile-bg.jpg" />
+    <Content Include="Theme\assets\images\qr.png" />
+    <Content Include="Theme\assets\images\sign.png" />
+    <Content Include="Theme\assets\images\stock\small-1.jpg" />
+    <Content Include="Theme\assets\images\stock\small-10.jpg" />
+    <Content Include="Theme\assets\images\stock\small-2.jpg" />
+    <Content Include="Theme\assets\images\stock\small-3.jpg" />
+    <Content Include="Theme\assets\images\stock\small-4.jpg" />
+    <Content Include="Theme\assets\images\stock\small-5.jpg" />
+    <Content Include="Theme\assets\images\stock\small-6.jpg" />
+    <Content Include="Theme\assets\images\stock\small-7.jpg" />
+    <Content Include="Theme\assets\images\stock\small-8.jpg" />
+    <Content Include="Theme\assets\images\stock\small-9.jpg" />
+    <Content Include="Theme\assets\images\tlqr.png" />
+    <Content Include="Theme\assets\images\user-bg-pattern.png" />
+    <Content Include="Theme\assets\images\users\user-1.jpg" />
+    <Content Include="Theme\assets\images\users\user-10.jpg" />
+    <Content Include="Theme\assets\images\users\user-2.jpg" />
+    <Content Include="Theme\assets\images\users\user-3.jpg" />
+    <Content Include="Theme\assets\images\users\user-4.jpg" />
+    <Content Include="Theme\assets\images\users\user-5.jpg" />
+    <Content Include="Theme\assets\images\users\user-6.jpg" />
+    <Content Include="Theme\assets\images\users\user-7.jpg" />
+    <Content Include="Theme\assets\images\users\user-8.jpg" />
+    <Content Include="Theme\assets\images\users\user-9.jpg" />
+    <Content Include="Theme\assets\js\app.js" />
+    <Content Include="Theme\assets\js\config.js" />
+    <Content Include="Theme\assets\js\maps\canada.js" />
+    <Content Include="Theme\assets\js\maps\in-mill-en.js" />
+    <Content Include="Theme\assets\js\maps\iraq.js" />
+    <Content Include="Theme\assets\js\maps\leaflet-data.js" />
+    <Content Include="Theme\assets\js\maps\russia.js" />
+    <Content Include="Theme\assets\js\maps\spain.js" />
+    <Content Include="Theme\assets\js\maps\us-aea-en.js" />
+    <Content Include="Theme\assets\js\maps\us-lcc-en.js" />
+    <Content Include="Theme\assets\js\maps\us-merc-en.js" />
+    <Content Include="Theme\assets\js\maps\us-mill-en.js" />
+    <Content Include="Theme\assets\js\maps\world-merc.js" />
+    <Content Include="Theme\assets\js\maps\world.js" />
+    <Content Include="Theme\assets\js\pages\analytics.js" />
+    <Content Include="Theme\assets\js\pages\api-keys.js" />
+    <Content Include="Theme\assets\js\pages\auth-password.js" />
+    <Content Include="Theme\assets\js\pages\auth-two-factor.js" />
+    <Content Include="Theme\assets\js\pages\calendar.js" />
+    <Content Include="Theme\assets\js\pages\chart-area.js" />
+    <Content Include="Theme\assets\js\pages\chart-bar.js" />
+    <Content Include="Theme\assets\js\pages\chart-line.js" />
+    <Content Include="Theme\assets\js\pages\chart-other.js" />
+    <Content Include="Theme\assets\js\pages\chat.js" />
+    <Content Include="Theme\assets\js\pages\coming-soon.js" />
+    <Content Include="Theme\assets\js\pages\custom-table.js" />
+    <Content Include="Theme\assets\js\pages\dashboard.js" />
+    <Content Include="Theme\assets\js\pages\datatables-add-rows.js" />
+    <Content Include="Theme\assets\js\pages\datatables-ajax.js" />
+    <Content Include="Theme\assets\js\pages\datatables-checkbox-select.js" />
+    <Content Include="Theme\assets\js\pages\datatables-child-rows.js" />
+    <Content Include="Theme\assets\js\pages\datatables-column-search.js" />
+    <Content Include="Theme\assets\js\pages\datatables-export-data.js" />
+    <Content Include="Theme\assets\js\pages\datatables-fixed-header.js" />
+    <Content Include="Theme\assets\js\pages\datatables-javascript-source.js" />
+    <Content Include="Theme\assets\js\pages\datatables-range-search.js" />
+    <Content Include="Theme\assets\js\pages\datatables-rendering.js" />
+    <Content Include="Theme\assets\js\pages\datatables-scroll.js" />
+    <Content Include="Theme\assets\js\pages\datatables-select.js" />
+    <Content Include="Theme\assets\js\pages\datatables-show-hide-columns.js" />
+    <Content Include="Theme\assets\js\pages\flags-listing.js" />
+    <Content Include="Theme\assets\js\pages\form-choice.js" />
+    <Content Include="Theme\assets\js\pages\form-fileupload.js" />
+    <Content Include="Theme\assets\js\pages\form-quilljs.js" />
+    <Content Include="Theme\assets\js\pages\form-typehead.js" />
+    <Content Include="Theme\assets\js\pages\form-wizard.js" />
+    <Content Include="Theme\assets\js\pages\landing.js" />
+    <Content Include="Theme\assets\js\pages\maps-leaflet.js" />
+    <Content Include="Theme\assets\js\pages\maps-vector.js" />
+    <Content Include="Theme\assets\js\pages\misc-clipboard.js" />
+    <Content Include="Theme\assets\js\pages\misc-gallery.js" />
+    <Content Include="Theme\assets\js\pages\misc-nestable.js" />
+    <Content Include="Theme\assets\js\pages\misc-pass-meter.js" />
+    <Content Include="Theme\assets\js\pages\misc-sweetalerts.js" />
+    <Content Include="Theme\assets\js\pages\misc-tour.js" />
+    <Content Include="Theme\assets\js\vendors.min.js" />
+    <Content Include="Theme\assets\plugins\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Theme\assets\plugins\bootstrap\bootstrap.min.css" />
+    <Content Include="Theme\assets\plugins\choices\choices.min.css" />
+    <Content Include="Theme\assets\plugins\choices\choices.min.js" />
+    <Content Include="Theme\assets\plugins\clipboard\clipboard.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\buttons.bootstrap5.min.css" />
+    <Content Include="Theme\assets\plugins\datatables\buttons.bootstrap5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\buttons.html5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\buttons.print.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.bootstrap5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.buttons.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.responsive.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\dataTables.select.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\fixedHeader.bootstrap5.min.css" />
+    <Content Include="Theme\assets\plugins\datatables\fixedHeader.bootstrap5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\jszip.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\pdfmake.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\responsive.bootstrap5.min.css" />
+    <Content Include="Theme\assets\plugins\datatables\responsive.bootstrap5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\select.bootstrap5.min.css" />
+    <Content Include="Theme\assets\plugins\datatables\select.bootstrap5.min.js" />
+    <Content Include="Theme\assets\plugins\datatables\vfs_fonts.js" />
+    <Content Include="Theme\assets\plugins\dropzone\dropzone-min.js" />
+    <Content Include="Theme\assets\plugins\dropzone\dropzone.css" />
+    <Content Include="Theme\assets\plugins\fullcalendar\index.global.min.js" />
+    <Content Include="Theme\assets\plugins\glightbox\glightbox.min.css" />
+    <Content Include="Theme\assets\plugins\glightbox\glightbox.min.js" />
+    <Content Include="Theme\assets\plugins\handlebars\handlebars.min.js" />
+    <Content Include="Theme\assets\plugins\jquery\jquery.min.js" />
+    <Content Include="Theme\assets\plugins\jsvectormap\jsvectormap.min.css" />
+    <Content Include="Theme\assets\plugins\jsvectormap\jsvectormap.min.js" />
+    <Content Include="Theme\assets\plugins\jsvectormap\world-merc.js" />
+    <Content Include="Theme\assets\plugins\jsvectormap\world.js" />
+    <Content Include="Theme\assets\plugins\leaflet\images\layers-2x.png" />
+    <Content Include="Theme\assets\plugins\leaflet\images\layers.png" />
+    <Content Include="Theme\assets\plugins\leaflet\images\marker-icon-2x.png" />
+    <Content Include="Theme\assets\plugins\leaflet\images\marker-icon.png" />
+    <Content Include="Theme\assets\plugins\leaflet\leaflet.css" />
+    <Content Include="Theme\assets\plugins\leaflet\leaflet.js" />
+    <Content Include="Theme\assets\plugins\lucide\lucide.min.js" />
+    <Content Include="Theme\assets\plugins\masonry\masonry.pkgd.min.js" />
+    <Content Include="Theme\assets\plugins\moment\moment.min.js" />
+    <Content Include="Theme\assets\plugins\muuri\muuri.min.js" />
+    <Content Include="Theme\assets\plugins\quill\quill.bubble.css" />
+    <Content Include="Theme\assets\plugins\quill\quill.core.css" />
+    <Content Include="Theme\assets\plugins\quill\quill.js" />
+    <Content Include="Theme\assets\plugins\quill\quill.snow.css" />
+    <Content Include="Theme\assets\plugins\simplebar\simplebar.min.css" />
+    <Content Include="Theme\assets\plugins\simplebar\simplebar.min.js" />
+    <Content Include="Theme\assets\plugins\sortablejs\Sortable.min.js" />
+    <Content Include="Theme\assets\plugins\spinkit\spinkit.min.css" />
+    <Content Include="Theme\assets\plugins\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Theme\assets\plugins\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Theme\assets\plugins\tourguidejs\tour.js" />
+    <Content Include="Theme\assets\plugins\tourguidejs\tour.min.css" />
+    <Content Include="Theme\assets\plugins\typeahead\typeahead.bundle.min.js" />
+    <Content Include="Theme\assets\plugins\web-animations\web-animations.min.js" />
+    <Content Include="Theme\assets\plugins\wnumb\wNumb.min.js" />
+    <Content Include="Theme\auth-delete-account.html" />
+    <Content Include="Theme\auth-lock-screen.html" />
+    <Content Include="Theme\auth-login-pin.html" />
+    <Content Include="Theme\auth-new-pass.html" />
+    <Content Include="Theme\auth-reset-pass.html" />
+    <Content Include="Theme\auth-sign-in.html" />
+    <Content Include="Theme\auth-sign-up.html" />
+    <Content Include="Theme\auth-success-mail.html" />
+    <Content Include="Theme\auth-two-factor.html" />
+    <Content Include="Theme\calendar.html" />
+    <Content Include="Theme\charts-area.html" />
+    <Content Include="Theme\charts-bar.html" />
+    <Content Include="Theme\charts-line.html" />
+    <Content Include="Theme\charts-other.html" />
+    <Content Include="Theme\chat.html" />
+    <Content Include="Theme\contacts.html" />
+    <Content Include="Theme\error-400.html" />
+    <Content Include="Theme\error-401.html" />
+    <Content Include="Theme\error-403.html" />
+    <Content Include="Theme\error-404.html" />
+    <Content Include="Theme\error-408.html" />
+    <Content Include="Theme\error-500.html" />
+    <Content Include="Theme\file-manager.html" />
+    <Content Include="Theme\form-elements.html" />
+    <Content Include="Theme\form-fileuploads.html" />
+    <Content Include="Theme\form-plugins.html" />
+    <Content Include="Theme\form-quill-editor.html" />
+    <Content Include="Theme\form-validation.html" />
+    <Content Include="Theme\form-wizard.html" />
+    <Content Include="Theme\forum-post.html" />
+    <Content Include="Theme\forum-view.html" />
+    <Content Include="Theme\icons-flags.html" />
+    <Content Include="Theme\icons-lucide.html" />
+    <Content Include="Theme\icons-tabler.html" />
+    <Content Include="Theme\index.html" />
+    <Content Include="Theme\invoice-create.html" />
+    <Content Include="Theme\invoice-details.html" />
+    <Content Include="Theme\invoices.html" />
+    <Content Include="Theme\landing.html" />
+    <Content Include="Theme\maintenance.html" />
+    <Content Include="Theme\maps-google.html" />
+    <Content Include="Theme\maps-leaflet.html" />
+    <Content Include="Theme\maps-vector.html" />
+    <Content Include="Theme\misc-clipboard.html" />
+    <Content Include="Theme\misc-gallery.html" />
+    <Content Include="Theme\misc-i18.html" />
+    <Content Include="Theme\misc-masonry.html" />
+    <Content Include="Theme\misc-nestable.html" />
+    <Content Include="Theme\misc-pass-meter.html" />
+    <Content Include="Theme\misc-preloader.html" />
+    <Content Include="Theme\misc-sweet-alerts.html" />
+    <Content Include="Theme\misc-tour.html" />
+    <Content Include="Theme\outlook.html" />
+    <Content Include="Theme\pages-coming-soon.html" />
+    <Content Include="Theme\pages-empty.html" />
+    <Content Include="Theme\pages-faq.html" />
+    <Content Include="Theme\pages-pricing.html" />
+    <Content Include="Theme\pages-profile.html" />
+    <Content Include="Theme\pages-search-results.html" />
+    <Content Include="Theme\pages-terms-conditions.html" />
+    <Content Include="Theme\pages-timeline.html" />
+    <Content Include="Theme\pin-board.html" />
+    <Content Include="Theme\projects.html" />
+    <Content Include="Theme\sidebar-dark.html" />
+    <Content Include="Theme\sidebar-gray.html" />
+    <Content Include="Theme\tables-custom.html" />
+    <Content Include="Theme\tables-datatables-add-rows.html" />
+    <Content Include="Theme\tables-datatables-ajax.html" />
+    <Content Include="Theme\tables-datatables-basic.html" />
+    <Content Include="Theme\tables-datatables-checkbox-select.html" />
+    <Content Include="Theme\tables-datatables-child-rows.html" />
+    <Content Include="Theme\tables-datatables-column-searching.html" />
+    <Content Include="Theme\tables-datatables-columns.html" />
+    <Content Include="Theme\tables-datatables-export-data.html" />
+    <Content Include="Theme\tables-datatables-fixed-header.html" />
+    <Content Include="Theme\tables-datatables-javascript.html" />
+    <Content Include="Theme\tables-datatables-range-search.html" />
+    <Content Include="Theme\tables-datatables-rendering.html" />
+    <Content Include="Theme\tables-datatables-scroll.html" />
+    <Content Include="Theme\tables-datatables-select.html" />
+    <Content Include="Theme\tables-static.html" />
+    <Content Include="Theme\topbar-dark.html" />
+    <Content Include="Theme\topbar-gray.html" />
+    <Content Include="Theme\ui-accordions.html" />
+    <Content Include="Theme\ui-alerts.html" />
+    <Content Include="Theme\ui-badges.html" />
+    <Content Include="Theme\ui-breadcrumb.html" />
+    <Content Include="Theme\ui-buttons.html" />
+    <Content Include="Theme\ui-cards.html" />
+    <Content Include="Theme\ui-carousel.html" />
+    <Content Include="Theme\ui-collapse.html" />
+    <Content Include="Theme\ui-colors.html" />
+    <Content Include="Theme\ui-dropdowns.html" />
+    <Content Include="Theme\ui-grid.html" />
+    <Content Include="Theme\ui-images.html" />
+    <Content Include="Theme\ui-links.html" />
+    <Content Include="Theme\ui-list-group.html" />
+    <Content Include="Theme\ui-modals.html" />
+    <Content Include="Theme\ui-notifications.html" />
+    <Content Include="Theme\ui-offcanvas.html" />
+    <Content Include="Theme\ui-pagination.html" />
+    <Content Include="Theme\ui-placeholders.html" />
+    <Content Include="Theme\ui-popovers.html" />
+    <Content Include="Theme\ui-progress.html" />
+    <Content Include="Theme\ui-scrollspy.html" />
+    <Content Include="Theme\ui-spinners.html" />
+    <Content Include="Theme\ui-tabs.html" />
+    <Content Include="Theme\ui-tooltips.html" />
+    <Content Include="Theme\ui-typography.html" />
+    <Content Include="Theme\ui-utilities.html" />
+    <Content Include="Theme\ui-videos.html" />
+    <Content Include="Theme\widgets.html" />
+    <Content Include="UserControls\MasterPageFooter.ascx" />
+    <Content Include="UserControls\MasterPageHeader.ascx" />
+    <Content Include="UserControls\MasterPageSidenavMenu.ascx" />
+    <Content Include="UserControls\MasterPageThemeSettings.ascx" />
+    <Content Include="UserControls\MasterPageTopbar.ascx" />
+    <Content Include="web-app-manifest-192x192.png" />
+    <Content Include="web-app-manifest-512x512.png" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ReylaMasterBase.cs" />
+    <Compile Include="Classes\UserProfile.cs" />
+    <Compile Include="AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="Classes\ReylaMasterBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Classes\UserProfile.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Privacy.aspx.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privacy.aspx.designer.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Activity.aspx.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Activity.aspx.designer.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Contacts\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Contacts\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Contacts\ContactHandler.ashx.cs">
+      <DependentUpon>ContactHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Contacts\ContactVCard.ashx.cs">
+      <DependentUpon>ContactVCard.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Contacts\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Contacts\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\CompToggle.ashx.cs">
+      <DependentUpon>CompToggle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReylaBasic.Master.cs">
+      <DependentUpon>ReylaBasic.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReylaBasic.Master.designer.cs">
+      <DependentUpon>ReylaBasic.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ReylaDataContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReylaDataContext.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Reyla.Master.cs">
+      <DependentUpon>Reyla.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reyla.Master.designer.cs">
+      <DependentUpon>Reyla.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Income.aspx.cs">
+      <DependentUpon>Income.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Income.aspx.designer.cs">
+      <DependentUpon>Income.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Notifications.aspx.cs">
+      <DependentUpon>Notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Notifications.aspx.designer.cs">
+      <DependentUpon>Notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Map.aspx.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Map.aspx.designer.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\Comps.aspx.cs">
+      <DependentUpon>Comps.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Comps.aspx.designer.cs">
+      <DependentUpon>Comps.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\DealToggle.ashx.cs">
+      <DependentUpon>DealToggle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\Digest.aspx.cs">
+      <DependentUpon>Digest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Digest.aspx.designer.cs">
+      <DependentUpon>Digest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\NoteToggle.ashx.cs">
+      <DependentUpon>NoteToggle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\Pipeline.aspx.cs">
+      <DependentUpon>Pipeline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Pipeline.aspx.designer.cs">
+      <DependentUpon>Pipeline.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\PropertyContactHandler.ashx.cs">
+      <DependentUpon>PropertyContactHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\PropertyDetail.aspx.cs">
+      <DependentUpon>PropertyDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\PropertyDetail.aspx.designer.cs">
+      <DependentUpon>PropertyDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\ProspectMap.aspx.cs">
+      <DependentUpon>ProspectMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Prospects.aspx.cs">
+      <DependentUpon>Prospects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Prospects.aspx.designer.cs">
+      <DependentUpon>Prospects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\RegridProxy.ashx.cs">
+      <DependentUpon>RegridProxy.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Prospects\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Prospects\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Support.aspx.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Support.aspx.designer.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ActivityModels.cs" />
+    <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\CoreLogicModels.cs" />
+    <Compile Include="Services\CoreLogicPropertyService.cs" />
+    <Compile Include="Services\CoreLogicTokenService.cs" />
+    <Compile Include="Services\DealService.cs" />
+    <Compile Include="Services\DigestService.cs" />
+    <Compile Include="Services\OwnerContactService.cs" />
+    <Compile Include="Services\PropertyProfileResult.cs" />
+    <Compile Include="Services\PropertySnapshotService.cs" />
+    <Compile Include="Services\ProspectNoteService.cs" />
+    <Compile Include="Services\ProspectService.cs" />
+    <Compile Include="Services\ReylaValuationService.cs" />
+    <Compile Include="Signin.aspx.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Signin.aspx.designer.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Terms.aspx.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Terms.aspx.designer.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MasterPageFooter.ascx.cs">
+      <DependentUpon>MasterPageFooter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MasterPageFooter.ascx.designer.cs">
+      <DependentUpon>MasterPageFooter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MasterPageHeader.ascx.cs">
+      <DependentUpon>MasterPageHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MasterPageHeader.ascx.designer.cs">
+      <DependentUpon>MasterPageHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MasterPageSidenavMenu.ascx.cs">
+      <DependentUpon>MasterPageSidenavMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MasterPageSidenavMenu.ascx.designer.cs">
+      <DependentUpon>MasterPageSidenavMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MasterPageThemeSettings.ascx.cs">
+      <DependentUpon>MasterPageThemeSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MasterPageThemeSettings.ascx.designer.cs">
+      <DependentUpon>MasterPageThemeSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MasterPageTopbar.ascx.cs">
+      <DependentUpon>MasterPageTopbar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MasterPageTopbar.ascx.designer.cs">
+      <DependentUpon>MasterPageTopbar.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="Theme\assets\css\app.min.css.map" />
+    <Content Include="Theme\assets\css\fonts\tabler-icons.ttf" />
+    <Content Include="Theme\assets\css\fonts\tabler-icons.woff" />
+    <Content Include="Theme\assets\css\fonts\tabler-icons.woff2" />
+    <Content Include="Theme\assets\data\datatables-rendering.json" />
+    <Content Include="Theme\assets\data\datatables.json" />
+    <Content Include="Theme\assets\data\translations\de.json" />
+    <Content Include="Theme\assets\data\translations\en.json" />
+    <Content Include="Theme\assets\data\translations\es.json" />
+    <Content Include="Theme\assets\data\translations\hi.json" />
+    <Content Include="Theme\assets\data\translations\it.json" />
+    <Content Include="Theme\assets\data\translations\ru.json" />
+    <Content Include="Theme\assets\data\typeahead-data-2.json" />
+    <Content Include="Theme\assets\data\typeahead.json" />
+    <Content Include="Reyla.Master" />
+    <Content Include="site.webmanifest" />
+    <Content Include="Secure\Prospects\NoteToggle.ashx" />
+    <Content Include="Secure\Prospects\DealToggle.ashx" />
+    <Content Include="Secure\Prospects\RegridProxy.ashx" />
+    <Content Include="Secure\Contacts\ContactHandler.ashx" />
+    <Content Include="Secure\Prospects\PropertyContactHandler.ashx" />
+    <Content Include="Secure\Contacts\ContactVCard.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59288</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44323/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

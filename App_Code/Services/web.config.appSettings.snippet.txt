@@ -1,0 +1,18 @@
+<!-- 
+  Add these keys to the existing <appSettings> block in web.config.
+  Replace the PLACEHOLDER values when your CoreLogic credentials arrive.
+  No code changes are required — CoreLogicTokenService reads from here.
+-->
+
+<appSettings>
+
+  <!-- Existing key -->
+  <add key="ForceRestart" value="26-01-16" />
+
+  <!-- CoreLogic SDP API credentials -->
+  <add key="CoreLogic.ClientId"     value="PLACEHOLDER_CLIENT_ID" />
+  <add key="CoreLogic.ClientSecret" value="PLACEHOLDER_CLIENT_SECRET" />
+  <add key="CoreLogic.TokenUrl"     value="https://prod.corelogicapi.com/oauth/token" />
+  <add key="CoreLogic.BaseUrl"      value="https://property.corelogicapi.com" />
+
+</appSettings>

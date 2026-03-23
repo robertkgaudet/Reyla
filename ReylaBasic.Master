@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ReylaBasic.master.cs" Inherits="Reyla.ReylaBasic" %>
+
+<%@ Register Src="~/UserControls/MasterPageHeader.ascx" TagPrefix="uc1" TagName="MasterPageHeader" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<uc1:MasterPageHeader runat="server" ID="MasterPageHeader" />
+</head>
+
+<body>
+<div class="color-line"></div>
+<form runat="server">
+    <a href="/Index.html" class="btn d-none d-lg-block btn-dark position-absolute z-1 m-3">Back to Home</a>
+    <div class="auth-box overflow-hidden align-items-center d-flex">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-4 col-md-6 col-sm-8">
+                    <div class="card">
+                        <div class="card-body">
+							
+							<asp:ContentPlaceHolder ID="MainContent" runat="server">
+							</asp:ContentPlaceHolder>
+                        </div>
+
+                        <p class="text-center text-muted mt-4 mb-0">
+                            © 2015 - <script>document.write(new Date().getFullYear())</script> BY <span class="fw-semibold">Reyla</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end auth-fluid-->
+
+    <!-- Vendor js -->
+    <script src="/Theme/assets/js/vendors.min.js"></script>
+
+    <!-- App js -->
+    <script src="/Theme/assets/js/app.js"></script>
+
+    <!-- Password Suggestion Js -->
+    <script src="/Theme/assets/js/pages/auth-password.js"></script>
+	
+</form>
+</body>
+
+</html>

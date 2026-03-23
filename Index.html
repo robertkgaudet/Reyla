@@ -1,0 +1,558 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Reyla — Your AI Real Estate Assistant</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Reyla is an AI-powered real estate assistant that helps agents see what’s happening, what’s changing, and what to do next — all through simple text conversations." />
+	<meta name="keywords" content="
+		real estate ai assistant,
+		realtor ai assistant,
+		real estate crm ai,
+		ai for realtors,
+		real estate insights,
+		predictive real estate tools,
+		realtor productivity ai,
+		brokerage ai platform,
+		real estate decision support
+	">
+	<meta name="author" content="Reyla">
+	<meta property="og:title" content="Reyla — Your AI Real Estate Assistant">
+	<meta property="og:description" content="Text Reyla to get real-time insights, neighborhood intelligence, and smarter next steps for your real estate business. Built for agents. Scales to brokerages.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://relya.ai">
+	<meta property="og:image" content="https://relya.ai/assets/images/og-reyla.jpg">
+
+	<!-- App favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+	<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<!-- End App favicon -->
+
+	<meta name="theme-color" content="#ffffff">
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="TextOS AI">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+	<link href="/Theme/assets/css/vendors.min.css" rel="stylesheet" type="text/css">
+	<!-- Minimal styling (works with Homer / Bootstrap layouts) -->
+	<style>
+		/* High-End Blue Theme Styles */
+		body {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+			margin: 0;
+			color: #e0e6ed; /* Light gray-blue text */
+			background: #1e293b; /* Soft navy blue background */
+			line-height: 1.6;
+		}
+
+		.container {
+			max-width: 1100px;
+			margin: auto;
+			padding: 0 24px;
+		}
+
+		.hero {
+			padding: 120px 0 100px;
+			background: #334155; /* Muted steel blue hero background */
+			text-align: center;
+		}
+
+			.hero h1 {
+				font-size: 3rem;
+				max-width: 800px;
+				margin: 0 auto 20px;
+				font-weight: 700;
+				color: #f1f5f9; /* White-blue text */
+			}
+
+			.hero p {
+				font-size: 1.25rem;
+				max-width: 720px;
+				margin: 0 auto 30px;
+				color: #94a3b8; /* Muted light blue-gray text */
+			}
+
+		.cta {
+			display: inline-block;
+			padding: 14px 28px;
+			background: #3b82f6; /* Bright blue button */
+			color: #ffffff; /* White text for contrast */
+			text-decoration: none;
+			border-radius: 6px;
+			font-weight: 600;
+		}
+
+		section {
+			padding: 80px 0;
+		}
+
+			section.alt {
+				background: #1e293b; /* Soft navy blue section background */
+			}
+
+		h2 {
+			text-align: center;
+			font-size: 2.2rem;
+			margin-bottom: 20px;
+			color: #f1f5f9; /* White-blue text */
+		}
+
+		.section-intro {
+			text-align: center;
+			max-width: 700px;
+			margin: 0 auto 50px;
+			color: #94a3b8; /* Muted light blue-gray text */
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 30px;
+		}
+
+		.card {
+			background: #273549; /* Slightly lighter navy blue background */
+			padding: 28px;
+			border-radius: 8px;
+			border: 1px solid #3b4a5e; /* Subtle border */
+			color: #e0e6ed; /* Light gray-blue text */
+		}
+
+			.card h3 {
+				margin-top: 0;
+				font-size: 1.2rem;
+				color: #f1f5f9; /* White-blue text */
+			}
+
+		.card {
+			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+		}
+
+			.card:hover {
+				transform: translateY(-4px);
+				background-color: #2e3f55; /* slightly lighter than base */
+				border-color: #4f6fa8; /* soft blue highlight */
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+			}
+
+		.quote {
+			font-size: 1.3rem;
+			font-weight: 500;
+			text-align: center;
+			max-width: 800px;
+			margin: auto;
+			color: #cbd5e1; /* Soft light blue-gray text */
+		}
+
+		footer {
+			padding: 40px 0;
+			text-align: center;
+			color: #94a3b8; /* Muted light blue-gray text */
+			font-size: 0.9rem;
+			background: #334155; /* Muted steel blue footer background */
+		}
+
+		.logo {
+			display: block;
+			margin: 0 auto 20px;
+			width: 200px;
+			height: auto;
+		}
+
+		.tlqr {
+			display: block;
+			margin: 0 auto 20px;
+			width: 120px;
+			height: auto;
+		}
+
+		.grid.dwlt-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		/* Tablet */
+		@media (max-width: 1024px) {
+			.grid.dwlt-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		/* Mobile */
+		@media (max-width: 640px) {
+			.grid.dwlt-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.card-icon {
+			font-size: 36px;
+			margin-bottom: 16px;
+			color: #60a5fa; /* soft blue accent */
+			display: inline-block;
+		}
+
+		.card {
+			text-align: center;
+		}
+
+		.card-icon {
+			display: block;
+			margin: 0 auto 12px;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HERO -->
+	<section class="hero">
+		<div class="container">
+			<img src="/Theme/assets/images/logo-transparent.png" alt="Reyla Logo" class="logo">
+
+			<h2>Reyla is Your AI Real Estate Assistant</h2>
+
+			<p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">
+				Reyla is an AI-first assistant designed around how real estate actually works.
+				<br />
+				Not ideal workflows. Not endless dashboards. Real days, real decisions.
+			</p>
+
+			<hr />
+
+			<p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">
+				Leads arrive scattered across texts, emails, and calls.
+				Follow-ups get delayed by one busy afternoon.
+				Market conditions shift mid-deal.
+				Important signals hide in conversations you meant to revisit.
+				<br /><br />
+				Most tools ask you to stop working in order to manage your work.
+				Reyla does the opposite.
+			</p>
+
+			<p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">
+				Reyla reduces cognitive load, surfaces what matters,
+				and helps you anticipate what to do next—quietly, intelligently,
+				and without forcing you into rigid workflows.
+			</p>
+
+			<p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">
+				<strong style="color:#e5e7eb;">Coming soon.</strong>
+				Access is opening in phases to limited regions.
+			</p>
+
+			<a href="/Register.aspx" class="cta">Register</a> <a href="/Signin.aspx" class="cta">Sign In</a>
+		</div>
+
+	</section>
+
+	<!-- WHAT TextOS IS -->
+	<section class="alt">
+		<div class="container">
+			<h2>What is Reyla?</h2>
+			<p class="section-intro">
+				A friendly AI assistant that helps you see what’s happening — and what to do next.
+			</p>
+
+			<div class="grid">
+				<div class="card">
+					<i class="ti ti-message card-icon"></i>
+					<h3>Just text Reyla</h3>
+					<p>
+						Ask questions, check activity, or get insights using simple text.
+						Reyla meets you where you already communicate.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-repeat card-icon"></i>
+					<h3>No apps to learn</h3>
+					<p>
+						Real estate moves fast. Reyla works through messaging,
+						so you can stay focused without switching tools.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-layout-grid card-icon"></i>
+					<h3>Clarity, automatically</h3>
+					<p>
+						Reyla uses AI to connect the dots — surfacing patterns,
+						changes, and next steps without extra effort.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- DWLT CATEGORIZATION SECTION -->
+	<section>
+		<div class="container">
+			<h2>Just say, “Hey Reyla”</h2>
+			<p class="section-intro">
+				Reyla listens first.
+				<br />
+				Ask questions out loud, the same way you would to a real assistant.
+			</p>
+
+			<div class="grid dwlt-grid">
+				<div class="card">
+					<i class="ti ti-map-pin card-icon"></i>
+					<h3>Get neighborhood insight</h3>
+					<p>
+						“Hey Reyla, what’s changing in Oak Forest?”<br />
+						“Hey Reyla, are there any new listings near 77024?”<br />
+						Reyla keeps an ear on the market.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-users card-icon"></i>
+					<h3>Understand people & activity</h3>
+					<p>
+						“Hey Reyla, who should I follow up with today?”<br />
+						“Hey Reyla, which buyers feel close to making a move?”<br />
+						Subtle signals, surfaced early.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-clock card-icon"></i>
+					<h3>Stay one step ahead</h3>
+					<p>
+						“Hey Reyla, what should I focus on this afternoon?”<br />
+						“Hey Reyla, did anything important change overnight?”<br />
+						No dashboards. Just awareness.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-microphone card-icon"></i>
+					<h3>Ask as you go</h3>
+					<p>
+						“Hey Reyla, remind me to check in with the Smiths next week.”<br />
+						“Hey Reyla, give me a quick summary of my active deals.”<br />
+						Reyla keeps track so you can keep moving.
+					</p>
+				</div>
+			</div>
+
+			<p class="quote" style="margin-top: 60px;">
+				Just say it. Reyla’s listening.
+			</p>
+		</div>
+
+	</section>
+
+	<!-- AI + PLAYBOOKS SECTION -->
+	<section class="alt">
+		<div class="container">
+			<h2>An assistant that looks out for you</h2>
+			<p class="section-intro">
+				Reyla isn’t waiting for commands.
+				She’s always listening for opportunities — patterns in your leads,
+				signals in your conversations, and clues in what you care about most.
+				<br /><br />
+				The more you talk to Reyla about what you’re seeing, what you want,
+				and who you’re working with, the better she gets at helping you win.
+				That’s what a real assistant does.
+			</p>
+
+			<div class="grid">
+				<div class="card">
+					<i class="ti ti-radar card-icon"></i>
+					<h3>She’s always watching for opportunity</h3>
+					<p>
+						Every conversation you have with Reyla adds context.
+						Over time, she learns which leads matter, what momentum looks like
+						in your market, and where opportunity is quietly forming —
+						even before it’s obvious.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-brain card-icon"></i>
+					<h3>Your thinking, refined</h3>
+					<p>
+						Talk through your observations, hunches, and concerns out loud.
+						Reyla helps organize them, connect them, and reflect them back
+						as clearer priorities, smarter follow-ups, and better timing.
+					</p>
+				</div>
+
+				<div class="card">
+					<i class="ti ti-sparkles card-icon"></i>
+					<h3>Results that get sharper over time</h3>
+					<p>
+						Reyla doesn’t reset after every question.
+						She compounds understanding — refining her suggestions as she
+						learns your style, your goals, and what “a good opportunity”
+						actually means to you.
+					</p>
+				</div>
+			</div>
+
+			<p class="quote" style="margin-top: 60px;">
+				An assistant doesn’t just answer questions.
+				She helps you notice what matters.
+			</p>
+		</div>
+
+	</section>
+
+
+
+	<!-- REAL LIFE MOMENTS -->
+	<section>
+		<div class="container">
+			<h2>Where realtors lose momentum</h2>
+			<p class="section-intro">
+				The hardest part of real estate isn’t talking to people —
+				it’s everything that pulls you away from it.
+				<br />
+				Reyla takes that mental load off so you can stay present,
+				build relationships, and win more conversations.
+			</p>
+
+			<div class="grid">
+				<div class="card">
+					<i class="ti ti-car card-icon"></i>
+					<strong>Between appointments</strong><br />
+					Driving from one showing to the next, remembering who said what,
+					what needs follow-up, and what you meant to do later.
+					<br /><br />
+					Reyla listens and keeps track.
+				</div>
+
+				<div class="card">
+					<i class="ti ti-message-circle card-icon"></i>
+					<strong>After a great conversation</strong><br />
+					You hang up knowing there was opportunity there —
+					but the details blur as the next call comes in.
+					<br /><br />
+					Reyla captures the signal while it’s fresh.
+				</div>
+
+				<div class="card">
+					<i class="ti ti-clock card-icon"></i>
+					<strong>End of the day</strong><br />
+					You know there are things you should follow up on,
+					but your brain is done making decisions.
+					<br /><br />
+					Reyla already knows what matters.
+				</div>
+
+				<div class="card">
+					<i class="ti ti-users card-icon"></i>
+					<strong>During meetings and showings</strong><br />
+					You’re focused on people — as you should be —
+					but ideas, questions, and next steps pop up mid-conversation.
+					<br /><br />
+					Reyla holds onto them so you don’t have to.
+				</div>
+
+				<div class="card">
+					<i class="ti ti-bulb card-icon"></i>
+					<strong>When strategy strikes unexpectedly</strong><br />
+					A thought about pricing, timing, or positioning hits
+					while you’re busy doing something else.
+					<br /><br />
+					Say it out loud. Reyla remembers.
+				</div>
+
+				<div class="card">
+					<i class="ti ti-heart-handshake card-icon"></i>
+					<strong>When you should be connecting</strong><br />
+					The real work is listening, advising, and building trust —
+					not juggling reminders, notes, and mental checklists.
+					<br /><br />
+					Reyla handles the overhead.
+				</div>
+			</div>
+
+			<p class="quote" style="margin-top: 60px;">
+				Reyla gives you your attention back —
+				so you can put it where it actually wins deals.
+			</p>
+		</div>
+
+	</section>
+
+
+
+	<!-- WHY IT MATTERS -->
+	<section class="alt">
+		<div class="container">
+			<h2>Why Reyla Exists</h2>
+			<p class="quote">
+				“The work isn’t the problem.
+				The problem is everything that steals your attention from it.”
+			</p>
+		</div>
+
+	</section>
+
+	<!-- VALUE -->
+	<section>
+		<div class="container">
+			<h2>Give your mind some backup</h2>
+			<p class="section-intro">
+				Real estate demands presence — listening, noticing, responding in real time.
+				Reyla exists so you don’t have to hold everything in your head while you do it.
+				<br /><br />
+				She remembers what matters, tracks what’s forming, and brings things back
+				to you when the timing is right.
+			</p>
+
+			<div class="grid dwlt-grid">
+				<div class="card">
+					<i class="ti ti-focus card-icon"></i>
+					<strong>Stay</strong> fully present with people
+				</div>
+
+				<div class="card">
+					<i class="ti ti-microphone card-icon"></i>
+					<strong>Say</strong> things out loud and keep moving
+				</div>
+
+				<div class="card">
+					<i class="ti ti-leaf card-icon"></i>
+					<strong>Clear</strong> mental space for better judgment
+				</div>
+
+				<div class="card">
+					<i class="ti ti-shield-check card-icon"></i>
+					<strong>Trust</strong> nothing important gets lost
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- CTA -->
+	<section class="hero alt">
+		<div class="container">
+			<h2><i class="ti ti-microphone card-icon"></i> Just say, “Hey Reyla.”</h2>
+			<p>
+				Reyla is your AI real estate assistant — always listening,
+				always looking out for your next opportunity.
+				<br />
+				No dashboards. No setup. Just ask.
+			</p>
+			Start now by talking to Reyla on Telegram or simply
+			<a style="color: #d63384;" href="http://t.me/reylaai_bot">click here</a>
+			to open the app and begin.
+		</div>
+	</section>
+
+	<footer>
+		© 2026 Reyla — Built to help you notice what matters.
+	</footer>
+
+
+</body>
+</html>

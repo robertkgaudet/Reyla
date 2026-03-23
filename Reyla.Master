@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Reyla.Master.cs" Inherits="Reyla.ReylaMaster" %>
+
+<%@ Register Src="~/UserControls/MasterPageHeader.ascx" TagPrefix="uc1" TagName="MasterPageHeader" %>
+<%@ Register Src="~/UserControls/MasterPageFooter.ascx" TagPrefix="uc1" TagName="MasterPageFooter" %>
+<%@ Register Src="~/UserControls/MasterPageSidenavMenu.ascx" TagPrefix="uc1" TagName="MasterPageSidenavMenu" %>
+<%@ Register Src="~/UserControls/MasterPageTopbar.ascx" TagPrefix="uc1" TagName="MasterPageTopbar" %>
+<%@ Register Src="~/UserControls/MasterPageThemeSettings.ascx" TagPrefix="uc1" TagName="MasterPageThemeSettings" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<uc1:MasterPageHeader runat="server" ID="MasterPageHeader" />
+	<style>
+		/* Add to existing <style> */
+		.reyla-bottom-spacer {
+			height: 50vh;               /* adjust to taste (50vh = half the viewport) */
+			pointer-events: none;       /* ensure it doesn't capture clicks */
+			background: transparent;    /* keep it invisible */
+		}
+	</style>
+</head>
+
+<body>
+<form runat="server">
+	<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
+    <!-- Begin page -->
+    <div class="wrapper">
+
+        
+        <!-- Topbar Start -->
+		<uc1:MasterPageTopbar runat="server" ID="MasterPageTopbar" />
+
+        <!-- Sidenav Menu Start -->
+		<uc1:MasterPageSidenavMenu runat="server" ID="MasterPageSidenavMenu" />
+        <!-- Sidenav Menu End -->
+
+        <!-- Topbar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Main Content -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+
+            <div class="container-fluid">
+                
+				<asp:ContentPlaceHolder ID="MainContent" runat="server">
+				</asp:ContentPlaceHolder>
+				<!-- Spacer so page bottom sits higher in the viewport -->
+				<div class="reyla-bottom-spacer" aria-hidden="true"></div>
+            </div>
+            <!-- container -->
+
+            <!-- Footer Start -->
+			<uc1:MasterPageFooter runat="server" id="MasterPageFooter" />
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End of Main Content -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- BEGIN Theme Settings -->
+	<uc1:MasterPageThemeSettings runat="server" ID="MasterPageThemeSettings" />
+    <!-- END Theme Settings -->
+</form>
+</body>
+</html>
